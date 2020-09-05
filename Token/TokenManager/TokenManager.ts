@@ -1,24 +1,30 @@
 // import ITokenStorage from "./ITokenStorage";
 
-import CookieManager from '../../Cookie/СookieManager';
 import ITokenManager from './ITokenManager';
 import IToken from '../IToken';
+import { ITokenStorage } from '../../TokenStorage/ITokenStorage';
 
-// TODO:
-//  СДЕЛАТЬ ВСЕ МЕТОДЫ СТАТИЧЕСКИМИ!!!!!!!!!!!!!!!!!!!!
 export default class TokenManager implements ITokenManager {
 
-	private readonly cookieManager: CookieManager;
+	private readonly tokenStorage: ITokenStorage;
 
-	constructor() {
-		this.cookieManager = new CookieManager();
+	constructor(tokenStorage: ITokenStorage) {
+		this.tokenStorage = tokenStorage;
 	}
 
 	public getToken(tokenName: string): string {
-		return this.cookieManager.getCookie(tokenName);
+		return this.tokenStorage.get(tokenName);
 	}
 
 	public setToken(tokenName: string, token: IToken): void {
-		this.cookieManager.setCookie(tokenName, token.token, { maxAge: token.expireIn });
-	}
+		this.tokenStorage.set(tokenName, token);
+    }
+    
+    public deleteToken(tokenName: string): void {
+		this.tokenStorage.delete(tokenName);
+    }
+    
+    public isValidToken(tokenName: string): boolean {
+        return this.tokenStorage.isValid(tokenName);
+    }
 }

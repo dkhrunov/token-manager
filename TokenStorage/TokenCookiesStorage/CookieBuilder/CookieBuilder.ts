@@ -1,5 +1,5 @@
 import ICookieBuilder from './ICookieBuilder';
-import { SamesiteOption } from '../ICookieOptions';
+import { SamesiteOption } from './ICookieOptions';
 
 export default class CookieBuilder implements ICookieBuilder {
 

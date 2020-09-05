@@ -1,6 +1,7 @@
 import AuthTokenManager from "./Token/AuthTokenManager";
 import IAuthTokens from "./Token/AuthTokenManager/IAuthTokens";
 import IToken from "./Token/IToken";
+import TokenCookiesStorage from "./TokenStorage/TokenCookiesStorage/TokenCookiesStorage";
 
 interface ITokensMock {
 	accessToken: string;
@@ -22,7 +23,7 @@ const authenticate = () => {
 	);
 }
 
-const authTokenManager = new AuthTokenManager();
+const authTokenManager = new AuthTokenManager(new TokenCookiesStorage());
 
 authenticate()
 	.then((tokens: ITokensMock): IAuthTokens => {
@@ -43,5 +44,13 @@ authenticate()
 		authTokenManager.setRefreshToken(tokens.refreshToken);
 
 		console.log('AuthTokenManager getAccessToken :>> ', authTokenManager.getAccessToken());
-		console.log('AuthTokenManager getRefreshToken :>> ', authTokenManager.getRefreshToken());
+        console.log('AuthTokenManager getRefreshToken :>> ', authTokenManager.getRefreshToken());
+
+		console.log('AuthTokenManager valid AccessToken? :>> ', authTokenManager.isValidAccessToken());
+        console.log('AuthTokenManager valid RefreshToken? :>> ', authTokenManager.isValidRefreshToken());
+        
+        authTokenManager.deleteAuthTokens();
+
+        console.log('AuthTokenManager AccessToken will be deleted :>> ', authTokenManager.getAccessToken());
+        console.log('AuthTokenManager RefreshToken will be deleted :>> ', authTokenManager.getRefreshToken());
 	});

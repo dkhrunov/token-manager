@@ -11,5 +11,15 @@ export default interface ITokenManager {
 	 * @param tokenName Имя токена.
 	 * @param token Токен.
 	 */
-	setToken(tokenName: string, token: IToken): void;
+    setToken(tokenName: string, token: IToken): void;
+    /**
+	 * Удалить токен по имени.
+	 * @param tokenName Имя токена.
+	 */
+    deleteToken(tokenName: string): void;
+    /**
+	 * Проверка валидности токена.
+	 * @param tokenName Имя токена.
+	 */
+    isValidToken(tokenName: string): boolean;
 }
