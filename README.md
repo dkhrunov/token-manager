@@ -1,5 +1,6 @@
 # TokenManager
-Модуль для работы и хранения токенов доступа в куках.
+Модуль для работы и хранения авторизационных токенов.
+[UML диаграмма](https://app.diagrams.net/#G13paFyaW6ByYMy2tUq4OcXsleWUjhi4SY)
 
 ### CookieManager
 Класс CookieManager для быстрой и легкой работой с куками.
