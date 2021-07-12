@@ -1,11 +1,11 @@
-import IToken from '../IToken';
+import IToken from '../Token/IToken';
 
 export default interface ITokenManager {
 	/**
 	 * Получить токен по имени.
 	 * @param tokenName Имя токена.
 	 */
-	getToken(tokenName: string): string;
+	getToken(tokenName: string): string | IToken | null;
 	/**
 	 * Сохранить токен, где имя токена является его ключом.
 	 * @param tokenName Имя токена.

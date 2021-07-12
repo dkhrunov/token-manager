@@ -1,18 +1,18 @@
 // import ITokenStorage from "./ITokenStorage";
 
 import ITokenManager from './ITokenManager';
-import IToken from '../IToken';
-import { ITokenStorage } from '../../TokenStorage/ITokenStorage';
+import IToken from '../Token/IToken';
+import TokenStorage from '../TokenStorage/TokenStorage';
 
 export default class TokenManager implements ITokenManager {
 
-	private readonly tokenStorage: ITokenStorage;
+	private readonly tokenStorage: TokenStorage;
 
-	constructor(tokenStorage: ITokenStorage) {
+	constructor(tokenStorage: TokenStorage) {
 		this.tokenStorage = tokenStorage;
 	}
 
-	public getToken(tokenName: string): string {
+	public getToken(tokenName: string): string | null {
 		return this.tokenStorage.get(tokenName);
 	}
 

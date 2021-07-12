@@ -1,9 +1,9 @@
-import IToken from '../IToken';
+import IToken from '../../Token/IToken';
 import IAuthTokens from './IAuthTokens';
 
 export default interface IAuthTokenManager {
 	/** Получить `accessToken`. */
-	getAccessToken(): string;
+	getAccessToken(): string | null;
 	/**
 	 * Сохранить токен доступа (`accessToken`).
 	 * @param accessToken Токен доступа.
@@ -15,7 +15,7 @@ export default interface IAuthTokenManager {
     isValidAccessToken(): boolean;
 
 	/** Получить `refreshToken`. */
-	getRefreshToken(): string;
+	getRefreshToken(): string | null;
 	/**
 	 * Сохранить токен обновления (`refreshToken`).
 	 * @param refreshToken Токен обновления.
@@ -27,7 +27,7 @@ export default interface IAuthTokenManager {
     isValidRefreshToken(): boolean;
 
 	/** Получить `accessToken` и `refreshToken`. */
-	getAuthTokens(): { accessToken: string; refreshToken: string };
+	getAuthTokens(): { accessToken: string | null; refreshToken: string | null };
 	/**
 	 * Сохранить токен доступа (`accessToken`) и токен обновления (`refreshToken`).
 	 * @param tokens Содержит токен доступа и токен обновления.
