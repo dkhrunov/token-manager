@@ -3,7 +3,7 @@ import IAuthTokens from './IAuthTokens';
 import IAuthTokenManager from './IAuthTokenManager';
 import TokenManager from '../TokenManager';
 import TokenStorage from '../../TokenStorage/TokenStorage';
-import { AuthTokens } from './AuthTokensEnum';
+import { AuthTokensTypes } from './AuthTokensTypes';
 
 export default class AuthTokenManager extends TokenManager implements IAuthTokenManager {
 
@@ -12,48 +12,48 @@ export default class AuthTokenManager extends TokenManager implements IAuthToken
 	}
 
 	public getAccessToken(): string | null {
-		return this.getToken(AuthTokens.accessToken);
+		return this.getToken(AuthTokensTypes.accessToken);
 	}
 
 	public setAccessToken(accessToken: IToken): void {
-		this.setToken(AuthTokens.accessToken, accessToken);
+		this.setToken(AuthTokensTypes.accessToken, accessToken);
     }
     
     public deleteAccessToken(): void {
-        this.deleteToken(AuthTokens.accessToken);
+        this.deleteToken(AuthTokensTypes.accessToken);
     }
 
     public isValidAccessToken(): boolean {
-        return this.isValidToken(AuthTokens.accessToken);
+        return this.isValidToken(AuthTokensTypes.accessToken);
     }
 
 	public getRefreshToken(): string | null {
-		return this.getToken(AuthTokens.refreshToken);
+		return this.getToken(AuthTokensTypes.refreshToken);
 	}
 
 	public setRefreshToken(refreshToken: IToken): void {
-		this.setToken(AuthTokens.refreshToken, refreshToken);
+		this.setToken(AuthTokensTypes.refreshToken, refreshToken);
     }
     
     public deleteRefreshToken(): void {
-        this.deleteToken(AuthTokens.refreshToken);
+        this.deleteToken(AuthTokensTypes.refreshToken);
     }
 
     public isValidRefreshToken(): boolean {
-        return this.isValidToken(AuthTokens.refreshToken);
+        return this.isValidToken(AuthTokensTypes.refreshToken);
     }
 
 	public getAccessTokenToRefresh(): string | null {
-		return this.getToken(AuthTokens.accessTokenToRefresh);
+		return this.getToken(AuthTokensTypes.accessTokenToRefresh);
 	}
 
 	public setAccessTokenToRefresh(tokens: IAuthTokens): void {
 		const accessTokenToRefresh: IToken = { token: tokens.accessToken.token, expireIn: tokens.refreshToken.expireIn };
-		this.setToken(AuthTokens.accessTokenToRefresh, accessTokenToRefresh);
+		this.setToken(AuthTokensTypes.accessTokenToRefresh, accessTokenToRefresh);
 	}
 
 	public deleteAccessTokenToRefresh(): void {
-		this.deleteToken(AuthTokens.accessTokenToRefresh);
+		this.deleteToken(AuthTokensTypes.accessTokenToRefresh);
 	}
 
 	public getAuthTokens(): { accessToken: string | null; refreshToken: string | null } {

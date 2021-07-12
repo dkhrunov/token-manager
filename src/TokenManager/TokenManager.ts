@@ -1,5 +1,3 @@
-// import ITokenStorage from "./ITokenStorage";
-
 import ITokenManager from './ITokenManager';
 import IToken from '../Token/IToken';
 import TokenStorage from '../TokenStorage/TokenStorage';
