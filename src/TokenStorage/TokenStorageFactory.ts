@@ -3,7 +3,6 @@ import TokenLocalStorage from "./TokenLocalStorage";
 import TokenStorage from "./TokenStorage";
 import { TokenStorageStrategy } from "./TokenStorageStrategy";
 
-// TODO: поискать еще варианты с реализацией фабрики
 export default class TokenStorageFactory {
 
     public static create(type: TokenStorageStrategy.LocalStorage): TokenLocalStorage;
